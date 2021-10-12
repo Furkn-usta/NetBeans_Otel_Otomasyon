@@ -1,0 +1,39 @@
+package otelotomasyon;
+import java.sql.*;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author 90553
+ */
+public class Baglanti {
+    private Connection conn=null;
+    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";//Buraya ellemenize gerek yok
+    static final String DOMAIN_NAME = "localhost";//Buraya ellemenize gerek yok
+    static final String DB_NAME = "OtelOto"; // Buraya database'iniz ismi gelecek.
+    static final String DB_URL = "jdbc:mysql://" + DOMAIN_NAME + "/" + DB_NAME +"?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey";//Buraya ellemenize gerek yok
+    static final String USER = "root";//Buraya ellemenize gerek yok. Fakat MySQL connection'ın değerlerini değiştirdiyseniz, burayıda ona göre değiştirmelisiniz.
+    static final String PASS = "furkansengul";//Buraya ellemenize gerek yok. Fakat M
+   
+    public Connection baglan()
+    {
+        return conn;
+    }
+    public  Baglanti()  {
+    
+             try{
+            
+             Class.forName("com.mysql.cj.jdbc.Driver");  
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            JOptionPane.showMessageDialog(null, "Connected to database");
+                }
+             
+        catch(Exception exp){
+            JOptionPane.showMessageDialog(null,exp);
+        }
+
+        
+      
+    }
+    
+}
